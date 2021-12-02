@@ -1,0 +1,25 @@
+{
+  // See http://go.microsoft.com/fwlink/?LinkId=827846
+  // for the documentation about the extensions.json format
+  "recommendations": [
+    // Extension identifier format: ${publisher}.${name}. Example: vscode.csharp
+    // "shan.code-settings-sync",
+    "streetsidesoftware.code-spell-checker",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "fabiospampinato.vscode-optimize-images",
+    "coenraads.bracket-pair-colorizer",
+    "formulahendry.auto-rename-tag",
+    "eamodio.gitlens",
+    "donjayamanne.githistory",
+    "msjsdiag.debugger-for-chrome",
+    "chakrounanas.turbo-console-log",
+    "vscode-icons-team.vscode-icons",
+
+    "ms-dotnettools.csharp",
+    "jchannon.csharpextensions",
+    "patcx.vscode-nuget-gallery",
+    "pkief.material-icon-theme",
+    "alexcvzz.vscode-sqlite"
+  ]
+}
