@@ -2,7 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
-string  connString = builder.Configuration.GetConnectionString("DefaultConnection");
+string connString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Add services to the container.
 
@@ -12,16 +12,31 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options =>
 {
-   options.UseSqlite(connString);
+  options.UseSqlite(connString);
 });
 
 var app = builder.Build();
 
+// Init database
+using var scope = app.Services.CreateScope();
+var services = scope.ServiceProvider;
+try
+{
+  var context = services.GetRequiredService<DataContext>();
+  context.Database.Migrate();
+}
+catch (Exception ex)
+{
+  var logger = services.GetRequiredService<ILogger<Program>>();
+  logger.LogError(ex, "Failed to migrate database");
+}
+////////////////////////////////////////////////////////////////////////////////////////////////
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 // app.UseHttpsRedirection();

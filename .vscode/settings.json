@@ -41,5 +41,10 @@
   "optimizeImages.imageRegex": ".*\\.(png|gif|jpe?g)$",
   "optimizeImages.searchDepth": 10, // Maximum depth to look at when searching images
   "optimizeImages.searchStartingPath": ".", // Path relative to the root where to start searching images
-  "optimizeImages.searchIgnoreFolders": [".git"]
+  "optimizeImages.searchIgnoreFolders": [
+    ".git"
+  ],
+  "[csharp]": {
+    "editor.defaultFormatter": "ms-dotnettools.csharp"
+  }
 }
