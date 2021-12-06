@@ -16,7 +16,27 @@ namespace API.Controllers
     [HttpGet]
     public async Task<ActionResult<List<Activity>>> GetActivities()
     {
-      return await (_context.Activities != null ? _context.Activities.ToListAsync() : null);
+      if (_context.Activities == null)
+      {
+        return new List<Activity>();
+      }
+      else
+      {
+        return await _context.Activities.ToListAsync();
+      }
+    }
+
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Activity?>> GetActivity(Guid id)
+    {
+      if (_context.Activities == null)
+      {
+        return new Activity();
+      }
+      else
+      {
+        return await _context.Activities.FindAsync(id);
+      }
     }
   }
 }
