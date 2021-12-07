@@ -15,6 +15,16 @@ builder.Services.AddDbContext<DataContext>(options =>
   options.UseSqlite(connString);
 });
 
+// CORS Policy
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy("CorsPolicy", (policy) =>
+  {
+    policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+  });
+});
+////////////////////////////////////////////////////////////////
+
 var app = builder.Build();
 
 // Init database
@@ -45,5 +55,7 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("CorsPolicy");
 
 await app.RunAsync();
