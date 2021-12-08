@@ -6,3 +6,8 @@ Steps to run the project
       Open Terminal
         cd API
         dotnet run
+
+2)  Run client-app
+      Open Terminal
+        npm i
+        npm start
