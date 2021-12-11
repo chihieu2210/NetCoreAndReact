@@ -9,7 +9,7 @@ interface Props {
 export default function ActivityList({ activities }: Props) {
   return (
     <>
-      <Item.Group divided>
+      <Item.Group divided style={{ backgroundColor: "#fff", padding: 5 }}>
         {activities.map((activity) => (
           <Item key={activity.id}>
             <Item.Content>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Grid } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
+import ActivityDetails from "../details/ActivityDetails";
 import ActivityList from "./ActivityList";
 
 interface Props {
@@ -10,9 +11,14 @@ interface Props {
 export default function ActivityDashboard({ activities }: Props) {
   return (
     <Grid>
-      <Grid.Column width="10" style={{ backgroundColor: "#fff" }}>
+      <Grid.Column width="10">
         <ActivityList activities={activities}></ActivityList>
       </Grid.Column>
+      {activities[0] && (
+        <Grid.Column width="6">
+          <ActivityDetails activity={activities[0]}></ActivityDetails>
+        </Grid.Column>
+      )}
     </Grid>
   );
 }
