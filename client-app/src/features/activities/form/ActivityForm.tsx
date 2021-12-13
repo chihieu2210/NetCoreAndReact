@@ -46,7 +46,7 @@ export default function ActivityForm({ activity: selectedActivity, closeForm, cr
           name="category"
           onChange={handleInputChange}
         />
-        <Form.Input placeholder="Date" value={activity.date} name="date" onChange={handleInputChange} />
+        <Form.Input type="date" placeholder="Date" value={activity.date} name="date" onChange={handleInputChange} />
         <Form.Input placeholder="City" value={activity.city} name="city" onChange={handleInputChange} />
         <Form.Input placeholder="Venue" value={activity.venue} name="venue" onChange={handleInputChange} />
         <Button floated="right" positive type="submit" content="Submit"></Button>
