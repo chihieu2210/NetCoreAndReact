@@ -32,7 +32,12 @@ export default function ActivityDashboard({
   return (
     <Grid>
       <Grid.Column width="10">
-        <ActivityList activities={activities} selectActivity={selectActivity} deleteActivity={deleteActivity}></ActivityList>
+        <ActivityList
+          submitting={submitting}
+          activities={activities}
+          selectActivity={selectActivity}
+          deleteActivity={deleteActivity}
+        ></ActivityList>
       </Grid.Column>
       <Grid.Column width="6">
         {selectedActivity && !editMode && (
@@ -43,7 +48,12 @@ export default function ActivityDashboard({
           />
         )}
         {editMode && (
-          <ActivityForm submitting={submitting} closeForm={closeForm} activity={selectedActivity} createOrEdit={createOrEdit} />
+          <ActivityForm
+            submitting={submitting}
+            closeForm={closeForm}
+            activity={selectedActivity}
+            createOrEdit={createOrEdit}
+          />
         )}
       </Grid.Column>
     </Grid>
