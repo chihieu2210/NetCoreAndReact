@@ -14,13 +14,20 @@ function App() {
 
   return (
     <>
-      <NavBar />
-      <Container style={{ marginTop: "6rem" }}>
-        <Route path="/" exact component={HomePage} />
-        <Route path="/activities" exact component={ActivityDashboard} />
-        <Route path="/activities/:id" component={ActivityDetails} />
-        <Route key={location.key} path={["/createActivity", "/manage/:id"]} component={ActivityForm} />
-      </Container>
+      <Route path="/" exact component={HomePage} />
+      <Route
+        path={"/(.+)"}
+        render={() => (
+          <>
+            <NavBar />
+            <Container style={{ marginTop: "6rem" }}>
+              <Route path="/activities" exact component={ActivityDashboard} />
+              <Route path="/activities/:id" component={ActivityDetails} />
+              <Route key={location.key} path={["/createActivity", "/manage/:id"]} component={ActivityForm} />
+            </Container>
+          </>
+        )}
+      />
     </>
   );
 }
