@@ -28,11 +28,22 @@ function ActivityForm() {
     }
   }, [id, loadActivity]);
 
+  const setValidCategoryImage = (category: string) => {
+    const validCategoryImages = ["culture", "drinks", "film", "food", "music", "travel"];
+
+    if (!validCategoryImages.includes(category)) {
+      category = "film";
+    }
+
+    return category;
+  };
+
   const handleSubmit = () => {
     if (activity.id.length === 0) {
       let newActivity = {
         ...activity,
-        id: uuid()
+        id: uuid(),
+        category: setValidCategoryImage(activity.category)
       };
       createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`));
     } else {
